@@ -6,7 +6,7 @@ RUN npm ci
 
 COPY . .
 ENV VITE_API_URL=http://localhost:8000
-RUN npm run build
+RUN chmod +x node_modules/.bin/vite && npm run build
 
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
